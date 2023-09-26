@@ -1,0 +1,21 @@
+<%- include('layouts/header'); -%>
+
+<body>
+  <%- include('layouts/nav'); -%>
+
+  <main>
+    <section class="about-section">
+      <div class="about-image">
+        <img src="/<%= page.imagePath %>" alt="<%= page.title %>">
+      </div>
+      <div class="about-content">
+        <h2 class="title"><%= page.title %></h2>
+        <div class="content">
+          <%- page.content %>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <%- include('layouts/footer'); -%>
+</body>

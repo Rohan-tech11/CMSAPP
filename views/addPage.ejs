@@ -1,0 +1,154 @@
+<%- include('layouts/header'); -%>
+<!DOCTYPE html>
+<html>
+<header>
+  <script>
+    tinymce.init({
+      selector: '#content',
+      plugins: 'link image lists table',
+      toolbar: 'undo redo | bold italic underline | styleselect | bullist numlist | fontsizeselect | fontselect',
+      menubar: false,
+      style_formats: [{
+          title: 'Headers',
+          items: [{
+              title: 'Heading 1',
+              format: 'h1'
+            },
+            {
+              title: 'Heading 2',
+              format: 'h2'
+            },
+            {
+              title: 'Heading 3',
+              format: 'h3'
+            },
+            {
+              title: 'Heading 4',
+              format: 'h4'
+            },
+            {
+              title: 'Heading 5',
+              format: 'h5'
+            },
+            {
+              title: 'Heading 6',
+              format: 'h6'
+            }
+          ]
+        },
+        {
+          title: 'Inline',
+          items: [{
+              title: 'Bold',
+              icon: 'bold',
+              format: 'bold'
+            },
+            {
+              title: 'Italic',
+              icon: 'italic',
+              format: 'italic'
+            },
+            {
+              title: 'Underline',
+              icon: 'underline',
+              format: 'underline'
+            }
+          ]
+        },
+        {
+          title: 'Lists',
+          items: [{
+              title: 'Unordered List',
+              icon: 'bullist',
+              format: 'unordered-list'
+            },
+            {
+              title: 'Ordered List',
+              icon: 'numlist',
+              format: 'ordered-list'
+            }
+          ]
+        },
+        {
+          title: 'Font Sizes',
+          items: [{
+              title: 'Small',
+              inline: 'span',
+              styles: {
+                fontSize: '12px'
+              }
+            },
+            {
+              title: 'Normal',
+              inline: 'span',
+              styles: {
+                fontSize: '16px'
+              }
+            },
+            {
+              title: 'Big',
+              inline: 'span',
+              styles: {
+                fontSize: '24px'
+              }
+            }
+          ]
+        },
+        {
+          title: 'Fonts',
+          items: [{
+              title: 'Arial',
+              inline: 'span',
+              styles: {
+                fontFamily: 'Arial'
+              }
+            },
+            {
+              title: 'Helvetica',
+              inline: 'span',
+              styles: {
+                fontFamily: 'Helvetica'
+              }
+            },
+            {
+              title: 'Times New Roman',
+              inline: 'span',
+              styles: {
+                fontFamily: 'Times New Roman'
+              }
+            }
+          ]
+        }
+      ]
+    });
+  </script>
+</header>
+
+<body>
+  <%- include('layouts/adminNav'); -%>
+  <h1 class="page-title">Add New Page</h1>
+  <form action="/save-page" method="POST" class="add-page-form" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="title">Page Title:</label>
+      <input type="text" id="title" name="title" required>
+    </div>
+    <div class="form-group">
+      <label for="image">Image:</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+    </div>
+    <div class="form-group">
+      <label for="content">Content:</label>
+      <div id="content" class="tinymce-editor"></div>
+    </div>
+
+    <button type="submit">Save Page</button>
+  </form>
+
+
+  <%- include('layouts/footer'); -%>
+
+</body>
+
+
+
+</html>
